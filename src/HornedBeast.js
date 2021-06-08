@@ -1,11 +1,15 @@
 import React from 'react';
 
-class Main extends React.Component {
+class HornedBeast extends React.Component {
   render() {
     return (
-      <p>I am Dave Arno, Website Author.</p>
+      <>
+        <h2>{this.props.header}</h2>
+        <img src={this.props.src} alt={this.props.alt} title={this.props.title} />
+        <p>{this.props.para}</p>
+      </>
     );
   }
 }
 
-export default Main;
+export default HornedBeast;
