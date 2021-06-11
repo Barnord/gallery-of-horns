@@ -4,6 +4,7 @@ import Main from './Main.js';
 import Footer from './Footer.js';
 import SelectedBeast from './SelectedBeast.js';
 import HornedBeastData from './resources/HornedBeastData.json';
+import HornForm from './HornForm.js';
 import './App.css';
 
 class App extends React.Component {
@@ -12,10 +13,18 @@ class App extends React.Component {
     this.state = {
       shouldShowModal: false,
       selectedBeast: HornedBeastData[0],
+      showHorns: 0
     };
     
   }
 
+  sendHorns = (e) => {
+    e.preventDefault();
+    this.setState({
+      showHorns: e.target.value
+    })
+    console.log(this.showHorns)
+  }
   
   showModal = beastNumber => {
     this.setState({shouldShowModal: true,
@@ -29,6 +38,7 @@ class App extends React.Component {
     return (
       <>
         <Header />
+        <HornForm submit={this.sendHorns} />
         <Main beasts={HornedBeastData} showModal={this.showModal} />
         <Footer />
         <SelectedBeast
