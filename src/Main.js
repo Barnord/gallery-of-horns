@@ -5,8 +5,16 @@ import CardColumns from 'react-bootstrap/CardColumns';
 
 class Main extends React.Component {
 
+  setHornArray = (arr, num) => {
+    if (num === 0) {
+      return arr
+    } else {
+      return arr.filter(i => i.horns === num)
+    }
+  }
+
   render() {
-    const BeastList = this.props.beasts.map(i => <HornedBeast beastNumber={this.props.beasts.indexOf(i)} showModal={this.props.showModal} title={i.title} img={i.image_url} alt={i.keyword} description={i.description} />)
+    let BeastList = this.setHornArray(this.props.beasts,this.props.showHorns).map(i => <HornedBeast beastNumber={this.props.beasts.indexOf(i)} showModal={this.props.showModal} title={i.title} img={i.image_url} alt={i.keyword} description={i.description} />)
     return (
       <>
         <CardColumns>
