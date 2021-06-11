@@ -18,12 +18,11 @@ class App extends React.Component {
     
   }
 
-  sendHorns = (e) => {
-    e.preventDefault();
+  sendHorns = hornNumber => {
     this.setState({
-      showHorns: e.target.value
+      showHorns: Number(hornNumber)
     })
-    console.log(this.showHorns)
+    console.log(this.state.showHorns)
   }
   
   showModal = beastNumber => {
@@ -38,8 +37,8 @@ class App extends React.Component {
     return (
       <>
         <Header />
-        <HornForm submit={this.sendHorns} />
-        <Main beasts={HornedBeastData} showModal={this.showModal} />
+        <HornForm sendHorns={this.sendHorns} />
+        <Main beasts={HornedBeastData} showModal={this.showModal} showHorns={this.state.showHorns} />
         <Footer />
         <SelectedBeast
         shouldShowModal={this.state.shouldShowModal}

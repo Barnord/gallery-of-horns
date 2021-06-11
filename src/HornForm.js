@@ -3,11 +3,24 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 class HornForm extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      showHorns: 0
+    };
+  }
+
+  sendHorns = e => {
+    e.preventDefault();
+    this.props.sendHorns(e.target.hornSelector.value)
+    // console.log(e.target.hornSelector.value)
+  }
+
   render() {
     return (
       <>
         <Form onSubmit={this.sendHorns}>
-          <Form.Group controlId="HornForm.ShowHorns">
+          <Form.Group controlId="hornSelector">
             <Form.Label>Number of Horns</Form.Label>
             <Form.Control as="select">
               <option value="0">All the horns!</option>
